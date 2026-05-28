@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --rescue-red:    #CC2B2B;
+  --rescue-dark:   #0D0D0D;
+  --rescue-panel:  #151515;
+  --rescue-border: #2A2A2A;
+  --rescue-muted:  #666666;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--rescue-dark);
+  color: #F0F0F0;
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--rescue-dark); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--rescue-red); }
+
+/* Leaflet dark overrides */
+.leaflet-container {
+  background: #1a1a1a !important;
+  font-family: 'DM Sans', sans-serif !important;
+}
+.leaflet-tile { filter: brightness(0.75) saturate(0.6); }
+.leaflet-control-attribution {
+  background: rgba(0,0,0,0.7) !important;
+  color: #666 !important;
+  font-size: 10px !important;
+}
+.leaflet-control-zoom a {
+  background: #1e1e1e !important;
+  color: #ccc !important;
+  border-color: #333 !important;
+}
+.leaflet-control-zoom a:hover { background: #CC2B2B !important; color: white !important; }
+.leaflet-popup-content-wrapper {
+  background: #1e1e1e !important;
+  color: #f0f0f0 !important;
+  border: 1px solid #333 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5) !important;
+}
+.leaflet-popup-tip { background: #1e1e1e !important; }
+
+/* Severity badge glow */
+.severity-5 { color: #FF4444; text-shadow: 0 0 12px rgba(255,68,68,0.6); }
+.severity-4 { color: #FF8C00; text-shadow: 0 0 12px rgba(255,140,0,0.5); }
+.severity-3 { color: #FFD700; text-shadow: 0 0 12px rgba(255,215,0,0.4); }
+.severity-2 { color: #44BB44; text-shadow: 0 0 8px rgba(68,187,68,0.4); }
+.severity-1 { color: #4488FF; text-shadow: 0 0 8px rgba(68,136,255,0.4); }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.animate-fade-up { animation: fadeUp 0.5s ease forwards; }
+.animate-blink   { animation: blink 1s step-end infinite; }
+
+.stagger-1 { animation-delay: 0.1s; opacity: 0; }
+.stagger-2 { animation-delay: 0.2s; opacity: 0; }
+.stagger-3 { animation-delay: 0.3s; opacity: 0; }
+.stagger-4 { animation-delay: 0.4s; opacity: 0; }
+.stagger-5 { animation-delay: 0.5s; opacity: 0; }
