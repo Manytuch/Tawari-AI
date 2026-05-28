@@ -5,16 +5,26 @@ export default {
     extend: {
       colors: {
         rescue: {
-          red:    '#CC2B2B',
-          dark:   '#0D0D0D',
-          panel:  '#151515',
-          border: '#2A2A2A',
-          muted:  '#666666',
+          // new semantic names
+          primary: '#6366F1',
+          accent:  '#06B6D4',
+          dark:    '#0B1220',
+          panel:   '#0f1724',
+          border:  '#1f2937',
+          muted:   '#94a3b8',
+          // legacy keys kept for existing classnames
+          red:    '#6366F1',
+          // keep old dark/panel/border/muted keys for compatibility
+          // (they match the semantic colors above)
+          panel:  '#0f1724',
+          border: '#1f2937',
+          muted:  '#94a3b8',
+          dark:   '#0B1220',
         },
       },
       fontFamily: {
-        display: ['"Syne"', 'sans-serif'],
-        body:    ['"DM Sans"', 'sans-serif'],
+        display: ['"Poppins"', 'sans-serif'],
+        body:    ['"Inter"', 'sans-serif'],
         mono:    ['"JetBrains Mono"', 'monospace'],
       },
       animation: {

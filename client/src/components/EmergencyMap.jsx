@@ -6,7 +6,7 @@ let L = null;
 const SEVERITY_COLORS = { 5: '#FF4444', 4: '#FF8C00', 3: '#FFD700', 2: '#44BB44', 1: '#4488FF' };
 
 function createIncidentIcon(severity) {
-  const color = SEVERITY_COLORS[severity] || '#CC2B2B';
+  const color = SEVERITY_COLORS[severity] || 'var(--theme-accent)';
   return L.divIcon({
     className: '',
     html: `
@@ -37,7 +37,7 @@ function createHospitalIcon(isFirst) {
     html: `
       <div style="
         width:32px; height:32px;
-        background:${isFirst ? '#22c55e' : '#1e40af'};
+        background:${isFirst ? 'var(--theme-accent)' : 'var(--theme-primary)'};
         border:2px solid white;
         border-radius:6px;
         display:flex; align-items:center; justify-content:center;
@@ -76,9 +76,9 @@ export default function EmergencyMap({ incidentLat, incidentLng, hospitals = [],
       L.marker([incidentLat, incidentLng], { icon: createIncidentIcon(severityScore) })
         .addTo(map)
         .bindPopup(`
-          <div style="font-family:DM Sans,sans-serif; padding:4px">
-            <strong style="color:#CC2B2B">🚨 Incident Location</strong><br/>
-            <span style="font-size:12px; color:#aaa">Severity: ${severityScore}/5</span>
+          <div style="padding:4px">
+            <strong style="color:var(--theme-accent)">🚨 Incident Location</strong><br/>
+            <span style="font-size:12px; color:var(--theme-muted)">Severity: ${severityScore}/5</span>
           </div>
         `)
         .openPopup();
@@ -87,20 +87,20 @@ export default function EmergencyMap({ incidentLat, incidentLng, hospitals = [],
       hospitals.forEach((h, i) => {
         L.marker([parseFloat(h.lat), parseFloat(h.lng)], { icon: createHospitalIcon(i === 0) })
           .addTo(map)
-          .bindPopup(`
-            <div style="font-family:DM Sans,sans-serif; padding:4px">
-              <strong style="color:${i === 0 ? '#22c55e' : '#93c5fd'}">${i === 0 ? '⭐ NEAREST — ' : ''}${h.name}</strong><br/>
-              <span style="font-size:12px; color:#aaa">${h.distance_km} km away · ~${h.estimated_minutes} min</span><br/>
-              <span style="font-size:12px; color:#aaa">${h.type} · ${h.operating_hours}</span><br/>
-              ${h.phone ? `<span style="font-size:12px; color:#aaa">📞 ${h.phone}</span>` : ''}
-            </div>
-          `);
+            .bindPopup(`
+              <div style="padding:4px">
+                <strong style="color:${i === 0 ? 'var(--theme-accent)' : 'var(--theme-primary)'}">${i === 0 ? '⭐ NEAREST — ' : ''}${h.name}</strong><br/>
+                <span style="font-size:12px; color:var(--theme-muted)">${h.distance_km} km away · ~${h.estimated_minutes} min</span><br/>
+                <span style="font-size:12px; color:var(--theme-muted)">${h.type} · ${h.operating_hours}</span><br/>
+                ${h.phone ? `<span style="font-size:12px; color:var(--theme-muted)">📞 ${h.phone}</span>` : ''}
+              </div>
+            `);
 
         // Draw line from incident to nearest hospital
         if (i === 0) {
           L.polyline(
             [[incidentLat, incidentLng], [parseFloat(h.lat), parseFloat(h.lng)]],
-            { color: '#22c55e', weight: 3, dashArray: '8 6', opacity: 0.8 }
+            { color: 'var(--theme-accent)', weight: 3, dashArray: '8 6', opacity: 0.8 }
           ).addTo(map);
         }
       });

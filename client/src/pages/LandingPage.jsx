@@ -62,9 +62,9 @@ export default function LandingPage() {
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
           style={{
-            backgroundImage: 'linear-gradient(#CC2B2B 1px, transparent 1px), linear-gradient(90deg, #CC2B2B 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
-          }}
+              backgroundImage: 'linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px)',
+              backgroundSize: '48px 48px',
+            }}
         />
 
         {/* Red accent blob */}

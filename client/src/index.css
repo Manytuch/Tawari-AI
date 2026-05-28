@@ -1,13 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --rescue-red:    #CC2B2B;
-  --rescue-dark:   #0D0D0D;
-  --rescue-panel:  #151515;
-  --rescue-border: #2A2A2A;
-  --rescue-muted:  #666666;
+  --theme-primary: #6366F1; /* indigo */
+  --theme-accent:  #06B6D4; /* cyan */
+  --theme-dark:    #0B1220; /* page background */
+  --theme-panel:   #0f1724;
+  --theme-border:  #1f2937;
+  --theme-muted:   #94a3b8;
 }
 
 * { box-sizing: border-box; }
@@ -15,9 +18,9 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--rescue-dark);
+  background-color: var(--theme-dark);
   color: #F0F0F0;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
@@ -25,34 +28,34 @@ body {
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--rescue-dark); }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--rescue-red); }
+::-webkit-scrollbar-thumb { background: var(--theme-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--theme-accent); }
 
 /* Leaflet dark overrides */
 .leaflet-container {
-  background: #1a1a1a !important;
-  font-family: 'DM Sans', sans-serif !important;
+  background: #0f1724 !important;
+  font-family: inherit !important;
 }
 .leaflet-tile { filter: brightness(0.75) saturate(0.6); }
 .leaflet-control-attribution {
-  background: rgba(0,0,0,0.7) !important;
-  color: #666 !important;
+  background: rgba(0,0,0,0.6) !important;
+  color: var(--theme-muted) !important;
   font-size: 10px !important;
 }
 .leaflet-control-zoom a {
-  background: #1e1e1e !important;
-  color: #ccc !important;
-  border-color: #333 !important;
+  background: var(--theme-panel) !important;
+  color: #e6eef8 !important;
+  border-color: var(--theme-border) !important;
 }
-.leaflet-control-zoom a:hover { background: #CC2B2B !important; color: white !important; }
+.leaflet-control-zoom a:hover { background: var(--theme-accent) !important; color: white !important; }
 .leaflet-popup-content-wrapper {
-  background: #1e1e1e !important;
+  background: var(--theme-panel) !important;
   color: #f0f0f0 !important;
-  border: 1px solid #333 !important;
+  border: 1px solid var(--theme-border) !important;
   border-radius: 8px !important;
   box-shadow: 0 4px 24px rgba(0,0,0,0.5) !important;
 }
-.leaflet-popup-tip { background: #1e1e1e !important; }
+.leaflet-popup-tip { background: var(--theme-panel) !important; }
 
 /* Severity badge glow */
 .severity-5 { color: #FF4444; text-shadow: 0 0 12px rgba(255,68,68,0.6); }

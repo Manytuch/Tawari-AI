@@ -110,9 +110,9 @@ export default function ReportPage() {
       <nav className="flex items-center justify-between px-6 md:px-10 py-5 border-b border-rescue-border">
         <button onClick={() => navigate('/')} className="flex items-center gap-3 group">
           <div className="w-8 h-8 bg-rescue-red rounded-sm flex items-center justify-center">
-            <span className="text-white font-display font-bold text-sm">R</span>
+            <span className="text-white font-display font-bold text-sm">TW</span>
           </div>
-          <span className="font-display font-bold text-white text-lg tracking-tight group-hover:text-rescue-red transition-colors">RescueAI</span>
+          <span className="font-display font-bold text-white text-lg tracking-tight group-hover:text-rescue-red transition-colors">TawariAI</span>
         </button>
         <span className="font-mono text-xs text-rescue-muted">Report Incident</span>
       </nav>
